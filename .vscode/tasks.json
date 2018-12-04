@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "nim c -d:debug --threads:on --debuginfo --lineDir:on --debugger:native -o:bin/debug ${file}",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "command": "nim c -d:release --threads:on kotsukotsu.nim",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Make a markdown",
+            "type": "shell",
+            "command": "kotsukotsu ${file}",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Now",
+            "type": "shell",
+            "command": "nim c -r --laxStrings:on --nilseqs:on --threads:on -o:${workspaceRoot}/bin/test ${file}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
