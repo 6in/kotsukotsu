@@ -8,18 +8,19 @@
 # imports: インポートモジュール
 import json,strutils
 import os
+const message = " hello"
 
 # =============================
 # title: XXXX1処理
 block:
-    echo "test1"
+    echo "test1" & message
 
 # =============================
 # title: XXXX2処理
 block:
-    echo "test2"
+    echo "test2" & message
 
 # =============================
 # title: XXXX3処理
 block:
-    echo "test3"
+    echo "test3" & message
