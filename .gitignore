@@ -1,4 +1,6 @@
-bin/
+bin/*
+bin/*.exe
 nimcache/
 *.exe
 markdown/*.md
+*.json

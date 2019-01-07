@@ -19,7 +19,31 @@
 | Build Now   | 現在編集中のソースを実行 | yes |
 | Make a Markdown | 現在編集中のソースをkotsukotsuで実行し、Markdownを生成 | no |
 
+本リポジトリをclone後は、Ctrl+Shift+Pでコマンドパレットを表示後、*Tasks: Run Task*を選択し、最初に"Build Release"を選んで、bin/kotsukotsu(.exe)を作成します。
+
 ## ソース書式
+
+実験したいソースなどは、samplesフォルダ配下に配置してください。
+
+サンプルコードは、全体構成として３つのパートから構成されます。
+- overviewセクション
+- importsセクション
+- サンプルコード(複数ブロック)
+
+
+overviewセクションは、Markdownの冒頭に記述する文章です。
+importsセクションは、各ブロックを実行するときに先頭に付与される共通コードとなります。
+
+importsセクションは、import文だけという制約はなく、構造体やらマクロ・定数なども書いておくこともできます。
+
+下記のソースなら、XXXX1処理を実行するには、以下のソースがテンポラリフォルダに作成され、コンパイル＆実行後の(標準出力に出力された)結果がMarkdownに追加されます。
+
+```nim:/tmp/temporary.nim
+import json,strutils
+import os
+block:
+    echo "test1"
+```
 
 ### ソース
 
@@ -54,7 +78,7 @@ block:
 
 ### 出力結果
 
-* kotsukotsu(.exe)にソースファイル(sample.nim)を引数に渡すと、以下のMarkdownがmarkdown/フォルダに出力されます。
+* タスク *Make a Markdown* をサンプルコードに対して実行すると以下のMarkdownがmarkdown/フォルダに出力されます。
 
 ```
 # 概要

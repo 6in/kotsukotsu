@@ -38,7 +38,7 @@ proc exec_nim(title:string, imp:string , code:string) : string =
 
   # コンパイル実行
   block:
-    let p: Process = startProcess("nim",os_tmp,@["c","-d:release", file])
+    let p: Process = startProcess("nim",os_tmp,@["c","-d:release","--hints:off","--verbosity:0", file])
     discard p.waitForExit()
     p.close
 
@@ -72,8 +72,7 @@ proc main(file_name: string) =
   for line in lines:
     if line == splitter :
       startSection = true
-    elif line == "" :
-      if curSection != "":
+      if curSection != "" :
         contents[curSection] = buff.join("\p")
         curSection = ""
         buff = @[]
@@ -96,7 +95,10 @@ proc main(file_name: string) =
         buff.add line.match(reg_comment).get().captures["comment"]
       else:
         buff.add line
-  
+
+  # 最後のブロックを格納
+  contents[curSection] = buff.join("\p")
+
   var output: seq[string] = @[]
   output.add "# 概要"
   output.add $contents["overview"]
@@ -120,7 +122,7 @@ proc main(file_name: string) =
     output.add "```"
     output.add ""
 
-  writeFile([dir, "markdown", name & ".md"].joinPath(), output.join("\p"))
+  writeFile([dir, "../markdown", name & ".md"].joinPath(), output.join("\p"))
 
 if os.commandLineParams().len == 0:
   main("sample.nim".expandFilename())

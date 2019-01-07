@@ -14,6 +14,8 @@ import os
 block:
     echo "test1"
 
+    echo "sample1"
+
 # =============================
 # title: XXXX2処理
 block:

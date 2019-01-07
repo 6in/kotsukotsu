@@ -14,7 +14,7 @@
         {
             "label": "Build Release",
             "type": "shell",
-            "command": "nim c -d:release --threads:on kotsukotsu.nim",
+            "command": "nim c -d:release --threads:on -o:bin/kotsukotsu src/kotsukotsu",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -24,7 +24,7 @@
         {
             "label": "Make a markdown",
             "type": "shell",
-            "command": "kotsukotsu ${file}",
+            "command": "${workspaceRoot}/bin/kotsukotsu ${file}",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -34,7 +34,7 @@
         {
             "label": "Build Now",
             "type": "shell",
-            "command": "nim c -r --laxStrings:on --nilseqs:on --threads:on -o:${workspaceRoot}/bin/test ${file}",
+            "command": "nim c -r --laxStrings:on --nilseqs:on --threads:on --hints:off --verbosity:0 -o:${workspaceRoot}/bin/test ${file}",
             "group": {
                 "kind": "build",
                 "isDefault": true
