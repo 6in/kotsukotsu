@@ -38,7 +38,7 @@ proc exec_nim(title:string, imp:string , code:string) : string =
 
   # コンパイル実行
   block:
-    let p: Process = startProcess("nim",os_tmp,@["c","-d:release","--hints:off","--verbosity:0", file])
+    let p: Process = startProcess("nim",os_tmp,@["c","-d:release","--hints:off","--verbosity:0", file], options = {poUsePath,poStdErrToStdOut})
     discard p.waitForExit()
     p.close
 

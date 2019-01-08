@@ -1,5 +1,6 @@
 bin/test
-bin/test.*
+bin/*.exe
+bin/kotsukotsu
 nimcache/
 *.exe
 markdown/*.md
