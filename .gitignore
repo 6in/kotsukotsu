@@ -5,3 +5,4 @@ nimcache/
 *.exe
 markdown/*.md
 *.json
+*.backup
