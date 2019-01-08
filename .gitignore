@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-bin/*
-bin/*.exe
-=======
 bin/test
 bin/test.*
->>>>>>> ab18c02445258706d645e4adfa3d0ca6d054be38
 nimcache/
 *.exe
 markdown/*.md
